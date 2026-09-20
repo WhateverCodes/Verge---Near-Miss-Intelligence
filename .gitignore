@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Pipeline outputs (regenerate with scripts/run_pipeline.py)
+outputs/*.json
+outputs/*.geojson
+outputs/*.md
+data/simulated_traffic.mp4
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,237 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8567,
+          18.5008
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_007",
+        "name": "Swargate Bus Depot Junction",
+        "accidents_count": 25,
+        "fatalities": 6,
+        "injuries": 41,
+        "years": "2021-2024",
+        "near_miss_count": 7,
+        "avg_near_miss_severity": 0.613,
+        "risk_score": 0.896,
+        "risk_tier": "Critical",
+        "factors": {
+          "accidents_norm": 1.0,
+          "fatalities_norm": 1.0,
+          "near_miss_norm": 0.583,
+          "avg_severity_norm": 1.0
+        },
+        "rank": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8079,
+          18.5018
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_003",
+        "name": "Karve Road Flyover Approach",
+        "accidents_count": 21,
+        "fatalities": 5,
+        "injuries": 34,
+        "years": "2021-2024",
+        "near_miss_count": 8,
+        "avg_near_miss_severity": 0.577,
+        "risk_score": 0.794,
+        "risk_tier": "Critical",
+        "factors": {
+          "accidents_norm": 0.81,
+          "fatalities_norm": 0.833,
+          "near_miss_norm": 0.667,
+          "avg_severity_norm": 0.941
+        },
+        "rank": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7389,
+          18.5912
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_005",
+        "name": "Hinjawadi Phase 1 Junction",
+        "accidents_count": 17,
+        "fatalities": 4,
+        "injuries": 29,
+        "years": "2021-2024",
+        "near_miss_count": 7,
+        "avg_near_miss_severity": 0.549,
+        "risk_score": 0.652,
+        "risk_tier": "High",
+        "factors": {
+          "accidents_norm": 0.619,
+          "fatalities_norm": 0.667,
+          "near_miss_norm": 0.583,
+          "avg_severity_norm": 0.896
+        },
+        "rank": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.841,
+          18.5231
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_002",
+        "name": "FC Road x JM Road Junction",
+        "accidents_count": 9,
+        "fatalities": 1,
+        "injuries": 15,
+        "years": "2021-2024",
+        "near_miss_count": 10,
+        "avg_near_miss_severity": 0.543,
+        "risk_score": 0.43,
+        "risk_tier": "Moderate",
+        "factors": {
+          "accidents_norm": 0.238,
+          "fatalities_norm": 0.167,
+          "near_miss_norm": 0.833,
+          "avg_severity_norm": 0.886
+        },
+        "rank": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8567,
+          18.5204
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_DEMO_01",
+        "name": "Demo Intersection (synthetic clip)",
+        "accidents_count": 14,
+        "fatalities": 3,
+        "injuries": 22,
+        "years": "2021-2024",
+        "near_miss_count": 1,
+        "avg_near_miss_severity": 0.55,
+        "risk_score": 0.427,
+        "risk_tier": "Moderate",
+        "factors": {
+          "accidents_norm": 0.476,
+          "fatalities_norm": 0.5,
+          "near_miss_norm": 0.083,
+          "avg_severity_norm": 0.897
+        },
+        "rank": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8079,
+          18.4791
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_006",
+        "name": "Warje Chowk",
+        "accidents_count": 11,
+        "fatalities": 2,
+        "injuries": 18,
+        "years": "2021-2024",
+        "near_miss_count": 5,
+        "avg_near_miss_severity": 0.575,
+        "risk_score": 0.414,
+        "risk_tier": "Moderate",
+        "factors": {
+          "accidents_norm": 0.333,
+          "fatalities_norm": 0.333,
+          "near_miss_norm": 0.417,
+          "avg_severity_norm": 0.938
+        },
+        "rank": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.905,
+          18.5504
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_004",
+        "name": "Nagar Road Signal",
+        "accidents_count": 6,
+        "fatalities": 0,
+        "injuries": 8,
+        "years": "2021-2024",
+        "near_miss_count": 12,
+        "avg_near_miss_severity": 0.59,
+        "risk_score": 0.379,
+        "risk_tier": "Moderate",
+        "factors": {
+          "accidents_norm": 0.095,
+          "fatalities_norm": 0.0,
+          "near_miss_norm": 1.0,
+          "avg_severity_norm": 0.962
+        },
+        "rank": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8077,
+          18.5609
+        ]
+      },
+      "properties": {
+        "site_id": "SITE_008",
+        "name": "Aundh Road Crossing",
+        "accidents_count": 4,
+        "fatalities": 0,
+        "injuries": 5,
+        "years": "2021-2024",
+        "near_miss_count": 0,
+        "avg_near_miss_severity": 0.0,
+        "risk_score": 0.0,
+        "risk_tier": "Low",
+        "factors": {
+          "accidents_norm": 0.0,
+          "fatalities_norm": 0.0,
+          "near_miss_norm": 0.0,
+          "avg_severity_norm": 0.0
+        },
+        "rank": 8
+      }
+    }
+  ]
+}

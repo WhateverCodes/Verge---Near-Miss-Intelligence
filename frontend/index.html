@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verge — Road-Risk Hotspot Dashboard</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◎</span>
+      <div>
+        <h1>Verge</h1>
+        <p>AI Road-Risk &amp; Near-Miss Intelligence — decision support, not fault assignment</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <label for="api-base">API base</label>
+      <input id="api-base" type="text" value="http://localhost:8000" />
+      <button id="btn-run-pipeline">Re-run pipeline</button>
+      <button id="btn-refresh">Refresh</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel map-panel">
+      <div id="map"></div>
+      <div class="legend">
+        <span class="dot tier-critical"></span> Critical
+        <span class="dot tier-high"></span> High
+        <span class="dot tier-moderate"></span> Moderate
+        <span class="dot tier-low"></span> Low
+      </div>
+    </section>
+
+    <section class="panel side-panel">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="hotspots">Ranked hotspots</button>
+        <button class="tab-btn" data-tab="report">Recommendation report</button>
+        <button class="tab-btn" data-tab="analyze">Analyze a video</button>
+      </div>
+
+      <div id="tab-hotspots" class="tab-content active">
+        <ol id="hotspot-list" class="hotspot-list">
+          <li class="empty-state">Loading hotspots…</li>
+        </ol>
+      </div>
+
+      <div id="tab-report" class="tab-content">
+        <article id="report-content" class="report-content">
+          <p class="empty-state">Loading report…</p>
+        </article>
+      </div>
+
+      <div id="tab-analyze" class="tab-content">
+        <p class="analyze-intro">
+          Upload a traffic clip and the detect → track → conflict stack runs
+          on just that video — no accident history or site catalogue needed.
+          You'll get a direct answer: did a crash almost happen in it?
+        </p>
+        <form id="analyze-form">
+          <input id="video-file" type="file" accept="video/*" required />
+          <button type="submit" id="btn-analyze">Analyze video</button>
+        </form>
+        <div id="analyze-result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Prototype for PS-17 · Verge — Safe &amp; Smart Communities · SDG 3 &amp; SDG 11.
+      Scores are AI-assisted decision support for human review; they do not identify
+      individuals or assign fault. See <code>README.md</code> for details.
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

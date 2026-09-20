@@ -1,0 +1,502 @@
+[
+  {
+    "site_id": "SITE_DEMO_01",
+    "frame": 1,
+    "t": 0.05,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 2.1,
+    "ttc_s": 1.2,
+    "severity": 0.55
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 1,
+    "t": 0.05,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 5.74,
+    "ttc_s": 1.41,
+    "severity": 0.329
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 2,
+    "t": 0.1,
+    "vehicle_id": 2,
+    "pedestrian_id": 3,
+    "distance_m": 5.11,
+    "ttc_s": 0.72,
+    "severity": 0.65
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 3,
+    "t": 0.15,
+    "vehicle_id": 4,
+    "pedestrian_id": 5,
+    "distance_m": 5.55,
+    "ttc_s": 0.99,
+    "severity": 0.352
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 4,
+    "t": 0.2,
+    "vehicle_id": 6,
+    "pedestrian_id": 7,
+    "distance_m": 3.09,
+    "ttc_s": 1.05,
+    "severity": 0.631
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 5,
+    "t": 0.25,
+    "vehicle_id": 8,
+    "pedestrian_id": 9,
+    "distance_m": 1.3,
+    "ttc_s": 1.8,
+    "severity": 0.868
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 6,
+    "t": 0.3,
+    "vehicle_id": 10,
+    "pedestrian_id": 11,
+    "distance_m": 4.15,
+    "ttc_s": 1.84,
+    "severity": 0.337
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 7,
+    "t": 0.35,
+    "vehicle_id": 12,
+    "pedestrian_id": 13,
+    "distance_m": 3.93,
+    "ttc_s": 0.61,
+    "severity": 0.433
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 8,
+    "t": 0.4,
+    "vehicle_id": 14,
+    "pedestrian_id": 15,
+    "distance_m": 3.78,
+    "ttc_s": 0.81,
+    "severity": 0.551
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 9,
+    "t": 0.45,
+    "vehicle_id": 16,
+    "pedestrian_id": 17,
+    "distance_m": 3.7,
+    "ttc_s": 1.81,
+    "severity": 0.636
+  },
+  {
+    "site_id": "SITE_002",
+    "frame": 10,
+    "t": 0.5,
+    "vehicle_id": 18,
+    "pedestrian_id": 19,
+    "distance_m": 4.41,
+    "ttc_s": 0.74,
+    "severity": 0.643
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 11,
+    "t": 0.55,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 2.86,
+    "ttc_s": 1.76,
+    "severity": 0.338
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 12,
+    "t": 0.6,
+    "vehicle_id": 2,
+    "pedestrian_id": 3,
+    "distance_m": 1.3,
+    "ttc_s": 0.97,
+    "severity": 0.708
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 13,
+    "t": 0.65,
+    "vehicle_id": 4,
+    "pedestrian_id": 5,
+    "distance_m": 3.14,
+    "ttc_s": 1.22,
+    "severity": 0.651
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 14,
+    "t": 0.7,
+    "vehicle_id": 6,
+    "pedestrian_id": 7,
+    "distance_m": 3.27,
+    "ttc_s": 1.19,
+    "severity": 0.777
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 15,
+    "t": 0.75,
+    "vehicle_id": 8,
+    "pedestrian_id": 9,
+    "distance_m": 4.49,
+    "ttc_s": 1.06,
+    "severity": 0.645
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 16,
+    "t": 0.8,
+    "vehicle_id": 10,
+    "pedestrian_id": 11,
+    "distance_m": 3.63,
+    "ttc_s": 2.51,
+    "severity": 0.738
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 17,
+    "t": 0.85,
+    "vehicle_id": 12,
+    "pedestrian_id": 13,
+    "distance_m": 2.44,
+    "ttc_s": 2.75,
+    "severity": 0.371
+  },
+  {
+    "site_id": "SITE_003",
+    "frame": 18,
+    "t": 0.9,
+    "vehicle_id": 14,
+    "pedestrian_id": 15,
+    "distance_m": 3.09,
+    "ttc_s": 2.24,
+    "severity": 0.391
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 19,
+    "t": 0.95,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 3.11,
+    "ttc_s": 2.71,
+    "severity": 0.347
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 20,
+    "t": 1.0,
+    "vehicle_id": 2,
+    "pedestrian_id": 3,
+    "distance_m": 3.79,
+    "ttc_s": 2.31,
+    "severity": 0.791
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 21,
+    "t": 1.05,
+    "vehicle_id": 4,
+    "pedestrian_id": 5,
+    "distance_m": 2.7,
+    "ttc_s": 1.31,
+    "severity": 0.598
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 22,
+    "t": 1.1,
+    "vehicle_id": 6,
+    "pedestrian_id": 7,
+    "distance_m": 4.98,
+    "ttc_s": 0.66,
+    "severity": 0.356
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 23,
+    "t": 1.15,
+    "vehicle_id": 8,
+    "pedestrian_id": 9,
+    "distance_m": 2.35,
+    "ttc_s": 2.1,
+    "severity": 0.339
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 24,
+    "t": 1.2,
+    "vehicle_id": 10,
+    "pedestrian_id": 11,
+    "distance_m": 4.66,
+    "ttc_s": 1.21,
+    "severity": 0.647
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 25,
+    "t": 1.25,
+    "vehicle_id": 12,
+    "pedestrian_id": 13,
+    "distance_m": 4.41,
+    "ttc_s": 1.52,
+    "severity": 0.73
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 26,
+    "t": 1.3,
+    "vehicle_id": 14,
+    "pedestrian_id": 15,
+    "distance_m": 5.44,
+    "ttc_s": 1.3,
+    "severity": 0.864
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 27,
+    "t": 1.35,
+    "vehicle_id": 16,
+    "pedestrian_id": 17,
+    "distance_m": 2.78,
+    "ttc_s": 1.91,
+    "severity": 0.596
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 28,
+    "t": 1.4,
+    "vehicle_id": 18,
+    "pedestrian_id": 19,
+    "distance_m": 2.09,
+    "ttc_s": 1.16,
+    "severity": 0.743
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 29,
+    "t": 1.45,
+    "vehicle_id": 20,
+    "pedestrian_id": 21,
+    "distance_m": 2.99,
+    "ttc_s": 2.61,
+    "severity": 0.598
+  },
+  {
+    "site_id": "SITE_004",
+    "frame": 30,
+    "t": 1.5,
+    "vehicle_id": 22,
+    "pedestrian_id": 23,
+    "distance_m": 1.83,
+    "ttc_s": 1.42,
+    "severity": 0.467
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 31,
+    "t": 1.55,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 5.1,
+    "ttc_s": 2.49,
+    "severity": 0.467
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 32,
+    "t": 1.6,
+    "vehicle_id": 2,
+    "pedestrian_id": 3,
+    "distance_m": 3.08,
+    "ttc_s": 1.33,
+    "severity": 0.831
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 33,
+    "t": 1.65,
+    "vehicle_id": 4,
+    "pedestrian_id": 5,
+    "distance_m": 5.79,
+    "ttc_s": 0.85,
+    "severity": 0.406
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 34,
+    "t": 1.7,
+    "vehicle_id": 6,
+    "pedestrian_id": 7,
+    "distance_m": 2.16,
+    "ttc_s": 1.04,
+    "severity": 0.591
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 35,
+    "t": 1.75,
+    "vehicle_id": 8,
+    "pedestrian_id": 9,
+    "distance_m": 3.95,
+    "ttc_s": 1.1,
+    "severity": 0.302
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 36,
+    "t": 1.8,
+    "vehicle_id": 10,
+    "pedestrian_id": 11,
+    "distance_m": 3.09,
+    "ttc_s": 1.35,
+    "severity": 0.64
+  },
+  {
+    "site_id": "SITE_005",
+    "frame": 37,
+    "t": 1.85,
+    "vehicle_id": 12,
+    "pedestrian_id": 13,
+    "distance_m": 5.77,
+    "ttc_s": 2.09,
+    "severity": 0.609
+  },
+  {
+    "site_id": "SITE_006",
+    "frame": 38,
+    "t": 1.9,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 3.28,
+    "ttc_s": 2.5,
+    "severity": 0.871
+  },
+  {
+    "site_id": "SITE_006",
+    "frame": 39,
+    "t": 1.95,
+    "vehicle_id": 2,
+    "pedestrian_id": 3,
+    "distance_m": 4.4,
+    "ttc_s": 1.79,
+    "severity": 0.539
+  },
+  {
+    "site_id": "SITE_006",
+    "frame": 40,
+    "t": 2.0,
+    "vehicle_id": 4,
+    "pedestrian_id": 5,
+    "distance_m": 2.97,
+    "ttc_s": 1.61,
+    "severity": 0.54
+  },
+  {
+    "site_id": "SITE_006",
+    "frame": 41,
+    "t": 2.05,
+    "vehicle_id": 6,
+    "pedestrian_id": 7,
+    "distance_m": 1.95,
+    "ttc_s": 2.76,
+    "severity": 0.564
+  },
+  {
+    "site_id": "SITE_006",
+    "frame": 42,
+    "t": 2.1,
+    "vehicle_id": 8,
+    "pedestrian_id": 9,
+    "distance_m": 1.55,
+    "ttc_s": 1.88,
+    "severity": 0.361
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 43,
+    "t": 2.15,
+    "vehicle_id": 0,
+    "pedestrian_id": 1,
+    "distance_m": 3.68,
+    "ttc_s": 2.68,
+    "severity": 0.668
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 44,
+    "t": 2.2,
+    "vehicle_id": 2,
+    "pedestrian_id": 3,
+    "distance_m": 1.35,
+    "ttc_s": 0.98,
+    "severity": 0.526
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 45,
+    "t": 2.25,
+    "vehicle_id": 4,
+    "pedestrian_id": 5,
+    "distance_m": 4.17,
+    "ttc_s": 2.7,
+    "severity": 0.661
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 46,
+    "t": 2.3,
+    "vehicle_id": 6,
+    "pedestrian_id": 7,
+    "distance_m": 3.37,
+    "ttc_s": 0.77,
+    "severity": 0.593
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 47,
+    "t": 2.35,
+    "vehicle_id": 8,
+    "pedestrian_id": 9,
+    "distance_m": 5.89,
+    "ttc_s": 1.6,
+    "severity": 0.487
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 48,
+    "t": 2.4,
+    "vehicle_id": 10,
+    "pedestrian_id": 11,
+    "distance_m": 1.72,
+    "ttc_s": 2.22,
+    "severity": 0.744
+  },
+  {
+    "site_id": "SITE_007",
+    "frame": 49,
+    "t": 2.45,
+    "vehicle_id": 12,
+    "pedestrian_id": 13,
+    "distance_m": 3.39,
+    "ttc_s": 2.09,
+    "severity": 0.61
+  }
+]
