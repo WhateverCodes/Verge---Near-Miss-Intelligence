@@ -1,0 +1,4 @@
+# OPTIONAL GPU acceleration for the object detector on Windows (DirectML:
+# any DirectX 12 GPU, no CUDA toolkit needed). If this is not installed or
+# does not work, Verge automatically uses the CPU path (OpenCV DNN) instead.
+onnxruntime-directml>=1.18; sys_platform == "win32"

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verge — Road-Risk Hotspot Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%2312463a%22/%3E%3Cpath d=%22M11.5 0.5h9v11h11v9h-11v11h-9v-11h-11v-9h11z%22 fill=%22%23cfe3d8%22 fill-opacity=%220.16%22/%3E%3Cpath d=%22M11.5 1v10.5H1M20.5 1v10.5H31M1 20.5h10.5V31M31 20.5H20.5V31%22 fill=%22none%22 stroke=%22%23cfe3d8%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M16 2v6M2 16h6M24 16h6%22 stroke=%22%23cfe3d8%22 stroke-width=%221.3%22 stroke-dasharray=%222 1.7%22/%3E%3Cpath d=%22M16 30.5v-7.5%22 stroke=%22%23dd8a2e%22 stroke-width=%221.6%22 stroke-dasharray=%221.4 1.6%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M12.6 15v-2.4H15M17 12.6h2.4V15M19.4 17v2.4H17M15 19.4h-2.4V17%22 fill=%22none%22 stroke=%22%23dd8a2e%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Crect x=%2214.4%22 y=%2214.4%22 width=%223.2%22 height=%223.2%22 rx=%220.8%22 fill=%22%23dd8a2e%22/%3E%3C/svg%3E" />
+  <!-- Leaflet is vendored (frontend/vendor/leaflet) so the dashboard works without internet. -->
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="style.css?v=20260927b" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <!-- Mark: a road intersection with a detected vehicle (amber tracking box)
+           and its tracked approach trajectory. -->
+      <svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+        <path d="M11.5 0.5h9v11h11v9h-11v11h-9v-11h-11v-9h11z" fill="#cfe3d8" fill-opacity="0.16"/>
+        <path d="M11.5 1v10.5H1M20.5 1v10.5H31M1 20.5h10.5V31M31 20.5H20.5V31" fill="none" stroke="#cfe3d8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 2v6M2 16h6M24 16h6" stroke="#cfe3d8" stroke-width="1.3" stroke-dasharray="2 1.7"/>
+        <path d="M16 30.5v-7.5" stroke="#dd8a2e" stroke-width="1.6" stroke-dasharray="1.4 1.6" stroke-linecap="round"/>
+        <path d="M12.6 15v-2.4H15M17 12.6h2.4V15M19.4 17v2.4H17M15 19.4h-2.4V17" fill="none" stroke="#dd8a2e" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="14.4" y="14.4" width="3.2" height="3.2" rx="0.8" fill="#dd8a2e"/>
+      </svg>
+      <div>
+        <h1>Verge</h1>
+        <p>AI Road-Risk &amp; Near-Miss Intelligence — decision support, not fault assignment</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span id="api-status" class="api-status" title="Backend connection">
+        <span class="api-dot"></span><span class="api-label">Checking API…</span>
+      </span>
+      <label for="api-base">API base</label>
+      <input id="api-base" type="text" value="http://localhost:8000" />
+      <button id="btn-run-pipeline">Re-run pipeline</button>
+      <button id="btn-refresh">Refresh</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel map-panel">
+      <div id="map"></div>
+      <div id="map-hint" class="map-hint" hidden></div>
+      <div class="map-search" role="search">
+        <label for="hotspot-search" class="map-search-label">Search hotspot</label>
+        <input id="hotspot-search" type="search" autocomplete="off" spellcheck="false"
+               placeholder="Search a monitored hotspot…" aria-controls="hotspot-suggest" />
+        <ul id="hotspot-suggest" class="map-search-suggest" role="listbox" hidden></ul>
+        <div id="hotspot-search-msg" class="map-search-msg" hidden></div>
+      </div>
+      <div class="legend">
+        <span class="legend-title">Risk level</span>
+        <span data-tier="Low" title="Review priority below 0.20"><span class="dot tier-low"></span> Low</span>
+        <span data-tier="Moderate" title="Review priority 0.20–0.39"><span class="dot tier-moderate"></span> Moderate</span>
+        <span data-tier="High" title="Review priority 0.40–0.59"><span class="dot tier-high"></span> High</span>
+        <span data-tier="Critical" title="Review priority 0.60 and above"><span class="dot tier-critical"></span> Critical</span>
+        <span class="legend-sep"></span>
+        <span><span class="ring-swatch"></span> AI-observed evidence</span>
+      </div>
+    </section>
+
+    <section class="panel side-panel">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="hotspots">Ranked hotspots</button>
+        <button class="tab-btn" data-tab="report">Recommendation report</button>
+        <button class="tab-btn" data-tab="analyze">Analyze a video</button>
+      </div>
+
+      <div id="tab-hotspots" class="tab-content active">
+        <div class="list-head">
+          <div id="hotspot-summary" class="list-summary"></div>
+          <button id="btn-visualize" type="button" class="table-btn" title="Chart of the ranked hotspots">Visualize</button>
+        </div>
+        <ol id="hotspot-list" class="hotspot-list">
+          <li class="empty-state">Loading hotspots…</li>
+        </ol>
+        <div class="list-footer">
+          <button id="btn-clear-evidence" class="link-btn" type="button">Clear uploaded-video evidence</button>
+        </div>
+      </div>
+
+      <div id="tab-report" class="tab-content">
+        <div class="report-toolbar">
+          <button id="btn-download-md" class="ghost-btn" type="button">Download report (.md)</button>
+        </div>
+        <article id="report-content" class="report-content">
+          <p class="empty-state">Loading report…</p>
+        </article>
+      </div>
+
+      <div id="tab-analyze" class="tab-content">
+        <form id="analyze-form" novalidate>
+          <div class="step">
+            <div class="step-head"><span class="step-num">1</span> Location</div>
+            <div id="loc-selected" class="loc-selected" hidden></div>
+            <div id="loc-picker" class="loc-picker">
+              <input id="loc-search" type="search" list="site-options" autocomplete="off"
+                     placeholder="Search a monitored location…" />
+              <datalist id="site-options"></datalist>
+              <p class="hint">…or click the map to pin a new location. Optional — without a
+                location the clip is analysed on its own and the risk map is not changed.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-head"><span class="step-num">2</span> Traffic video</div>
+            <label class="file-drop" id="file-drop">
+              <input id="video-file" type="file" accept="video/*,.mp4,.mov,.avi,.mkv,.webm,.m4v" />
+              <span class="file-drop-main" id="file-drop-label">Choose a clip or drop it here</span>
+              <span class="file-drop-sub">MP4, MOV, AVI, MKV or WebM · up to 200 MB · fixed camera works best</span>
+            </label>
+            <label class="detector-pick">
+              <span>Detector</span>
+              <select id="detector">
+                <option value="auto" selected>Automatic (recommended)</option>
+                <option value="object">Object detector (YOLO) — real footage</option>
+                <option value="motion">Motion-based — synthetic demo clips only</option>
+              </select>
+            </label>
+          </div>
+
+          <button type="submit" id="btn-analyze" class="primary-btn">Analyze video</button>
+        </form>
+
+        <div id="analyze-progress"></div>
+        <div id="analyze-result"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Verge Road Safety Assistant: floating launcher (lower right) + panel -->
+  <button id="btn-assistant" type="button" class="assist-fab" aria-controls="assistant-panel" aria-expanded="false"
+          title="Verge Road Safety Assistant"><svg class="mascot" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M3 7a5 5 0 0 1 5-5h20a5 5 0 0 1 5 5v17a5 5 0 0 1-5 5H15l-6.5 5v-5H8a5 5 0 0 1-5-5z" fill="#12463a"/><g transform="translate(6.5 3.5) scale(0.72)"><path d="M11.5 0.5h9v11h11v9h-11v11h-9v-11h-11v-9h11z" fill="#cfe3d8" fill-opacity="0.18"/><path d="M11.5 1v10.5H1M20.5 1v10.5H31M1 20.5h10.5V31M31 20.5H20.5V31" fill="none" stroke="#cfe3d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.6 15v-2.4H15M17 12.6h2.4V15M19.4 17v2.4H17M15 19.4h-2.4V17" fill="none" stroke="#dd8a2e" stroke-width="1.8" stroke-linecap="round"/><rect x="14.4" y="14.4" width="3.2" height="3.2" rx="0.8" fill="#dd8a2e"/></g><g class="mascot-dots"><circle cx="27" cy="7" r="1.6"/><circle cx="31" cy="7" r="1.6"/><circle cx="35" cy="7" r="1.6"/></g></svg><span>Ask Verge</span></button>
+  <!-- Verge Road Safety Assistant: grounded answers from /api/assistant (no LLM) -->
+  <aside id="assistant-panel" class="assistant-panel" aria-label="Verge Road Safety Assistant" hidden>
+    <div class="as-head">
+      <div>
+        <div class="as-title"><svg class="mascot" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M3 7a5 5 0 0 1 5-5h20a5 5 0 0 1 5 5v17a5 5 0 0 1-5 5H15l-6.5 5v-5H8a5 5 0 0 1-5-5z" fill="#12463a"/><g transform="translate(6.5 3.5) scale(0.72)"><path d="M11.5 0.5h9v11h11v9h-11v11h-9v-11h-11v-9h11z" fill="#cfe3d8" fill-opacity="0.18"/><path d="M11.5 1v10.5H1M20.5 1v10.5H31M1 20.5h10.5V31M31 20.5H20.5V31" fill="none" stroke="#cfe3d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.6 15v-2.4H15M17 12.6h2.4V15M19.4 17v2.4H17M15 19.4h-2.4V17" fill="none" stroke="#dd8a2e" stroke-width="1.8" stroke-linecap="round"/><rect x="14.4" y="14.4" width="3.2" height="3.2" rx="0.8" fill="#dd8a2e"/></g><g class="mascot-dots"><circle cx="27" cy="7" r="1.6"/><circle cx="31" cy="7" r="1.6"/><circle cx="35" cy="7" r="1.6"/></g></svg>Verge Road Safety Assistant</div>
+        <div class="as-sub">Answers only from Verge data · decision support, not fault assignment</div>
+      </div>
+      <button type="button" id="as-close" class="as-close" aria-label="Close assistant">×</button>
+    </div>
+    <div id="as-context" class="as-context"></div>
+    <div id="as-log" class="as-log" aria-live="polite">
+      <div class="as-msg as-bot"><p>Ask about a monitored hotspot, the latest video analysis, or how Verge works. I only answer from the data in this system.</p></div>
+    </div>
+    <div id="as-suggest" class="as-suggest"></div>
+    <form id="as-form" class="as-form" autocomplete="off">
+      <input id="as-input" type="text" maxlength="300" placeholder="Ask about this hotspot or the latest video…" />
+      <button type="submit" class="primary-btn">Ask</button>
+    </form>
+  </aside>
+
+  <!-- E-mail a report: the backend attaches the same PDF as the download -->
+  <dialog id="email-dialog" class="analysis-dialog email-dialog" aria-labelledby="em-title">
+    <div class="ad-body">
+      <h3 id="em-title" class="em-title">Send Verge Report</h3>
+      <form id="em-form" novalidate>
+        <label class="em-field">Recipient email<input id="em-to" type="email" required placeholder="name@example.gov.in" /></label>
+        <label class="em-field">Subject<input id="em-subject" type="text" maxlength="200" /></label>
+        <div class="em-attach">Attachment: <b id="em-attachment"></b></div>
+        <p id="em-status" class="em-status"></p>
+        <div class="ad-actions">
+          <button type="submit" id="em-send" class="primary-btn">Send Report</button>
+          <button type="button" id="em-cancel" class="ghost-btn">Cancel</button>
+        </div>
+      </form>
+      <div id="em-done" hidden></div>
+    </div>
+  </dialog>
+
+  <!-- Ranked hotspots chart: built from the current hotspot data by renderViz() -->
+  <dialog id="viz-dialog" class="analysis-dialog viz-dialog" aria-labelledby="viz-title">
+    <div class="ad-body">
+      <div class="ad-head">
+        <div>
+          <h3 id="viz-title">Monitored Hotspots — Review Priority</h3>
+          <div id="viz-sub" class="hint"></div>
+        </div>
+        <div class="ad-choice" role="group" aria-label="Chart view">
+          <button type="button" class="ghost-btn" data-viz="risk">Risk Score</button>
+          <button type="button" class="ghost-btn" data-viz="crash">Crash &amp; Fatality</button>
+        </div>
+      </div>
+      <div id="viz-chart" class="viz-chart"></div>
+      <div id="viz-tip" class="viz-tip" hidden></div>
+      <div class="ad-actions">
+        <span class="hint">Click a bar to open that hotspot's View Analysis. Table view: Ranked hotspots / Recommendation report.</span>
+        <button type="button" id="viz-close" class="ghost-btn">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Hotspot analysis dialog: filled per hotspot by openAnalysis() in app.js -->
+  <dialog id="analysis-dialog" class="analysis-dialog" aria-labelledby="ad-title">
+    <div class="ad-body"></div>
+  </dialog>
+
+  <footer class="footer">
+    <p>
+      Prototype for PS-17 · Verge — Safe &amp; Smart Communities · SDG 3 &amp; SDG 11.
+      Scores are AI-assisted decision support for human review; they do not identify
+      individuals or assign fault. Historical crash figures are synthetic sample data.
+      See <code>README.md</code> for details.
+    </p>
+  </footer>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="app.js?v=20260927b"></script>
+</body>
+</html>
