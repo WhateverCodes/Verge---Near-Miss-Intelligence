@@ -1,0 +1,9 @@
+site_id,name,lat,lon,accidents_count,fatalities,injuries,years
+SITE_DEMO_01,Demo Intersection (synthetic clip),18.5204,73.8567,14,3,22,2021-2024
+SITE_002,FC Road x JM Road Junction,18.5231,73.8410,9,1,15,2021-2024
+SITE_003,Karve Road Flyover Approach,18.5018,73.8079,21,5,34,2021-2024
+SITE_004,Nagar Road Signal,18.5504,73.9050,6,0,8,2021-2024
+SITE_005,Hinjawadi Phase 1 Junction,18.5912,73.7389,17,4,29,2021-2024
+SITE_006,Warje Chowk,18.4791,73.8079,11,2,18,2021-2024
+SITE_007,Swargate Bus Depot Junction,18.5008,73.8567,25,6,41,2021-2024
+SITE_008,Aundh Road Crossing,18.5609,73.8077,4,0,5,2021-2024
